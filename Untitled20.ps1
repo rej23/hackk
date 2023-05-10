@@ -1,6 +1,4 @@
 ﻿
-
-
     Write-Host -ForegroundColor Cyan "Welcome type start-hackergame to start hacking"
 
 # while ($lockopen -eq "False")
@@ -25,8 +23,8 @@ Function Set-LockStatus {
 
 Function Start-HackerGame {
     $Device1 = Get-Random -Minimum 1 -Maximum 252
-    $Device2 = Get-Random -Minimum $Device1 -Maximum 253
-    $Device3 = Get-Random -Minimum $Device2 -Maximum 254
+    $Device2 = Get-Random -Minimum ($Device1 + 1) -Maximum 253
+    $Device3 = Get-Random -Minimum ($Device2 + 1) -Maximum 254
     $Subnet = Get-Random -Minimum 1 -Maximum 254
     $global:Devices=@("192.168.$Subnet.$Device1","192.168.$Subnet.$Device2","192.168.$Subnet.$Device3")
     $global:CorrectDevice = Get-Random -Minimum 0 -Maximum 2
@@ -152,6 +150,8 @@ REMARKS
                 If ($Command -eq "Open") {
                     If ((Set-LockStatus -Open) -eq "Open") {
                         Write-Host -ForegroundColor Green "Lock status: Open!"
+                        start-sleep -seconds 5
+                        clear #clears the console
                         
                         # $lockopen -eq "True"
                     } Else {
