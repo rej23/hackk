@@ -1,32 +1,17 @@
-﻿
-
-
-    Write-Host -ForegroundColor Cyan "Welcome type start-hackergame to start hacking"
-
-# while ($lockopen -eq "False")
-# {
-
-
+﻿Write-Host "Welcome type start-hackergame to start hacking"
 Function Set-LockStatus {
     Param(
         [Switch]$Open,
         [Switch]$Close
     )
-    Write-Host "Lock function reports lock open"
+    Write-Host -ForegroundColor blue "Lock function reports lock open"
     Return "Open"
-
-   
 }
-
-
-
-
-
 
 Function Start-HackerGame {
     $Device1 = Get-Random -Minimum 1 -Maximum 252
-    $Device2 = Get-Random -Minimum $Device1 -Maximum 253
-    $Device3 = Get-Random -Minimum $Device2 -Maximum 254
+    $Device2 = Get-Random -Minimum ($Device1 + 1) -Maximum 253
+    $Device3 = Get-Random -Minimum ($Device2 + 1) -Maximum 254
     $Subnet = Get-Random -Minimum 1 -Maximum 254
     $global:Devices=@("192.168.$Subnet.$Device1","192.168.$Subnet.$Device2","192.168.$Subnet.$Device3")
     $global:CorrectDevice = Get-Random -Minimum 0 -Maximum 2
@@ -50,16 +35,9 @@ Function Start-HackerGame {
 }
 
 Function Get-HackerHelp {
-    Write-Host -ForegroundColor Green "Hints:"
-    Write-Host -ForegroundColor Green "Get-NetworkDevices    Returns a list of devices on the network"
-    Write-Host -ForegroundColor Green "Get-OpenPorts         Returns a list of open ports on a device"
-    Write-Host -ForegroundColor Green "Invoke-API            Sends commands to a web API"
-    Write-Host -ForegroundColor Green "Get-HackerHelp        See this list again"
-    Write-Host -ForegroundColor Green "Shortcuts:"
-    Write-Host -ForegroundColor Green "Highlight text Shift + Arrow key"
-    Write-Host -ForegroundColor Green "Copy    Ctrl + C"
-    Write-Host -ForegroundColor Green "Paste   Ctrl + V"
-
+    Write-Host "Get-NetworkDevices    Returns a list of devices on the network"
+    Write-Host "Get-OpenPorts         Returns a list of open ports on a device"
+    Write-Host "Invoke-API            Sends commands to a web API"
 }
 
 Function Get-NetworkDevices {
@@ -151,9 +129,10 @@ REMARKS
                 Start-Sleep -Seconds 1
                 If ($Command -eq "Open") {
                     If ((Set-LockStatus -Open) -eq "Open") {
-                        Write-Host -ForegroundColor Green "Lock status: Open!"
-                        
-                        # $lockopen -eq "True"
+                        Write-Host -ForegroundColor Green "Lock status: Open"
+                        Start-Sleep -seconds 5 
+                        Clear #clears the console
+
                     } Else {
                         Write-Host -ForegroundColor Red "Error: Lock failed on opening.  Ask for help"
                         300..7000 | Get-Random -Count 35 | ForEach {[console]::Beep($_, 150)}
@@ -192,5 +171,4 @@ REMARKS
         Write-Host $HelpText
         Return
     }
-}
-# }
+    }
