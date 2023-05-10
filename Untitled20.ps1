@@ -44,6 +44,28 @@ Function Start-HackerGame {
     Write-Host "Target Port: $($Ports[$CorrectPort])"
     Start-Sleep -Seconds 3
     cls
+Write-Host "
+               ,---------------------------,
+              |  /---------------------\  |
+              | |                       | |
+              | |        TAKE           | |
+              | |         THE           | |
+              | |      HACK SEAT        | |
+              | |                       | |
+              |  \_____________________/  |
+              |___________________________|
+            ,---\_____     []     _______/------,
+          /         /______________\           /|
+        /___________________________________ /  | ___
+        |                                   |   |    )
+        |  _ _ _                 [-------]  |   |   (
+        |  o o o                 [-------]  |  /    _)_
+        |__________________________________ |/     /  /
+    /-------------------------------------/|      ( )/
+  /-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/ /
+/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/ /
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+start-sleep -Seconds 3
     Get-HackerHelp
 }
 
@@ -53,7 +75,10 @@ Function Get-HackerHelp {
     Write-Host -ForegroundColor Green "Get-OpenPorts         Returns a list of open ports on a device"
     Write-Host -ForegroundColor Green "Invoke-API            Sends commands to a web API"
     Write-Host -ForegroundColor Green "Get-HackerHelp        See this list again"
-    
+    Write-Host -ForegroundColor Green "Shortcuts:"
+    Write-Host -ForegroundColor Green "Highlight text Shift + Arrow key"
+    Write-Host -ForegroundColor Green "Copy    Ctrl + C"
+    Write-Host -ForegroundColor Green "Paste   Ctrl + V"
 
 }
 
@@ -147,7 +172,39 @@ REMARKS
                 If ($Command -eq "Open") {
                     If ((Set-LockStatus -Open) -eq "Open") {
                         Write-Host -ForegroundColor Green "Lock status: Open!"
-                        start-sleep -seconds 5
+                        write-host "
+                                              ,
+                                            ,o
+                                            :o
+                   _....._                  `:o
+                 .'       ``-.                \o
+                /  _      _   \                \o
+               :  /*\    /*\   )                ;o
+               |  \_/    \_/   /                ;o
+               (       U      /                 ;o
+                \  (\_____/) /                  /o
+                 \   \_m_/  (                  /o
+                  \         (                ,o:
+                  )          \,           .o;o'           ,o'o'o.
+                ./          /\o;o,,,,,;o;o;''         _,-o,-'''-o:o.
+ .             ./o./)        \    'o'o'o''         _,-'o,o'         o
+ o           ./o./ /       .o \.              __,-o o,o'
+ \o.       ,/o /  /o/)     | o o'-..____,,-o'o o_o-'
+ `o:o...-o,o-' ,o,/ |     \   'o.o_o_o_o,o--''
+ .,  ``o-o'  ,.oo/   'o /\.o`.
+ `o`o-....o'o,-'   /o /   \o \.                       ,o..         o
+   ``o-o.o--      /o /      \o.o--..          ,,,o-o'o.--o:o:o,,..:o
+                 (oo(          `--o.o`o---o'o'o,o,-'''        o'o'o
+                  \ o\              ``-o-o''''
+   ,-o;o           \o \
+  /o/               )o )
+ (o(               /o /                |
+  \o\.       ...-o'o /             \   |
+    \o`o`-o'o o,o,--'       ~~~~~~~~\~~|~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      ```o--'''                       \| /
+                                       |/
+                                       "
+                        start-sleep -seconds 10
                         clear #clears the console
                         
                         # $lockopen -eq "True"
