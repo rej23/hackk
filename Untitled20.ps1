@@ -53,10 +53,7 @@ Function Get-HackerHelp {
     Write-Host -ForegroundColor Green "Get-OpenPorts         Returns a list of open ports on a device"
     Write-Host -ForegroundColor Green "Invoke-API            Sends commands to a web API"
     Write-Host -ForegroundColor Green "Get-HackerHelp        See this list again"
-    Write-Host -ForegroundColor Green "Shortcuts:"
-    Write-Host -ForegroundColor Green "Highlight text Shift + Arrow key"
-    Write-Host -ForegroundColor Green "Copy    Ctrl + C"
-    Write-Host -ForegroundColor Green "Paste   Ctrl + V"
+    
 
 }
 
@@ -120,7 +117,7 @@ NAME
     Invoke-API
     
 SYNTAX
-    Invoke-API -Address <Address> -Port <PortNumber> [-Method {Default | Get | Head | Post | Put | Delete | Trace | Options | Merge | Patch}] -Command <string>
+    Invoke-API -Address <Address> -Port <PortNumber> -Method {Get | Post | Delete} -Command {move | close | open}
 
 REMARKS
     Use this command to send data to a remote API (Application Programming Interface).
