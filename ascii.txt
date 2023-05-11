@@ -20,3 +20,19 @@
 /-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/ /
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                                        "
+
+#include <ESP8266WiFi.h>
+
+ 
+
+/*Put your SSID & Password*/
+const char* ssid = "TP-Link_BF63";    // Enter SSID here
+const char* password = "Import!Offend$Silver87";  //Enter Password here
+
+ 
+
+const char* server = "192.168.0.2";
+
+ 
+
+WiFiClient client;
